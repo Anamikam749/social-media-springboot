@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @Setter
 public class User {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy= GenerationType.IDENTITY )
 	private Integer id;
 	
 	//@Size(min=2, message = "Name should have atleast 2 characters")
@@ -30,7 +31,7 @@ public class User {
 	private LocalDate birthDate;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-	//@JsonIgnore
+	@JsonIgnore
 	private List<Post> posts;
 
 }

@@ -2,19 +2,19 @@ package com.anamikash.socialMedia.services.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.anamikash.socialMedia.entities.User;
+import com.anamikash.socialMedia.exceptions.UserNotFoundException;
 import com.anamikash.socialMedia.repository.UserRepository;
 import com.anamikash.socialMedia.services.UserService;
 
 import lombok.AllArgsConstructor;
 
-//@AllArgsConstructor
+@AllArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
-	@Autowired
+	
 	 private UserRepository userRepository;
 	 
 //	 private PostRepository postRepository;
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserById(Integer userId) {
-		return userRepository.findById(userId).orElse(null);
+		return userRepository.findById(userId).get();
 	}
 
 }

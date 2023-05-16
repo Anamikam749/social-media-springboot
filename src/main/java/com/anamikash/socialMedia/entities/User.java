@@ -21,6 +21,14 @@ public class User {
 	@GeneratedValue
 	private Integer id;
 	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	//@Size(min=2, message = "Name should have atleast 2 characters")
 	//@JsonProperty("user_name")
 	private String name;
